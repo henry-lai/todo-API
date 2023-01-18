@@ -23,14 +23,14 @@ router.get('/filter', (req,res) =>{
 	res.send(foundToDo);
 });
 
-// delete a to-do (DELETE)
+// delete a to-do (DELETE) by uuid
 router.delete('/:id', (req,res) => {
 	const {id} = req.params;
 	todoItems = todoItems.filter((todoEntry) => todoEntry.id != id );
 	res.send(`todo deleted from db with ID ${id}`);
 });
 
-// Update a to-do (UPDATE)
+// Update a to-do (UPDATE) by uuid
 router.patch('/:id', (req,res) => {
 	const {id} = req.params;
 	const {name, description, dueDate, status} = req.body;
