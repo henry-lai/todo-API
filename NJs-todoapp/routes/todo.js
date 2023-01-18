@@ -60,7 +60,7 @@ router.patch('/:id', (req,res) => {
 	res.send(`To Do with id ${id} has been updated`);
 });
 
-// Sort By Status value
+// Sort By Status value; Not Done will be at top
 router.get('/sort', (req,res) => {
 	todoItems = todoItems.sort( (a,b) => {
 		const statusOrder = ['NotDone', 'Done'];
