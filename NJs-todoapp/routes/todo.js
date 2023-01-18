@@ -11,9 +11,25 @@ router.get('/', (req,res) => {
 
 // add to do entry (CREATE)
 router.post('/', (req,res) =>{
-	const todoEntry = req.body;
-	todoItems.push({...todoEntry, id: uuidv4()});
-	res.send(`user with the name ${todoEntry.name} added`);
+	let dummydata = [
+		{"name": "Get Food", "description":"Lorem Ipsum","dueDate":"2023-04-01", "status":"Done"},
+		{"name": "Get Clothes", "description":"Lorem Ipsum","dueDate":"2023-04-01", "status":"NotDone"},
+		{"name": "Do Excercise", "description":"Lorem Ipsum","dueDate":"2023-04-01", "status":"NotDone"}
+	];
+	let response = [];
+	if(!Object.keys(req.body).length) 
+	{
+		for (let i = 0; i < 3; i++) {
+			const todoEntry = dummydata[i];
+			todoItems.push({ ...todoEntry, id: uuidv4() });
+			response.push(`user with the name ${dummydata[i].name} added`);
+		}
+    }else{
+		const todoEntry = req.body;
+		todoItems.push({ ...todoEntry, id: uuidv4() });
+		response.push(`user with the name ${todoEntry.name} added`);
+	} 
+	res.send(response);
 });
 
 //Get to-do by ID (Filter)

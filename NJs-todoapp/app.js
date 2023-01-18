@@ -1,5 +1,5 @@
 const express =  require("express");
-const routes = require('./routes');
+const routes = require('./routes/todo');
 const app = express();
 const PORT = 8080;
 
@@ -8,7 +8,8 @@ const PORT = 8080;
 app.use(express.json());
 
 //routes
-app.use(require("./routes/index.js",routes));
+app.use(require("./routes/todo.js",routes));
+
 
 // server
 app.listen(PORT ,
